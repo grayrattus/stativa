@@ -1,0 +1,4 @@
+title=Title of website
+templates=templates/mainTemplate.sh templates/smallImagesPartialTemplate.sh
+encrypted=TRUE
+imagesDirectory=pathToDirectoryOfImages
