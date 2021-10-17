@@ -66,3 +66,6 @@ It is adding decryption for `gpg` or link images when encryption flag is not pro
 - `SUB_IMAGES_IDS` - string of paths to images separated by space that left between template parsing
 - `SUB_ALL_IMAGES` - string of paths separated by space that are in images directory provided in config
 
+# Why stativa?
+
+`sta` comes from `static site generator` and `va` from `vacation`.
