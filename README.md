@@ -44,7 +44,7 @@ imagesDirectory=encrypted_my_photos
 - encrypted - if it's provided files will be encrypted with passphrase you provide in further step.
 - imagesDirectory - path to directory in which you would like to make gallery from. In this directory `index.html` will be generated that will allow to view your files in the browser.
 
-#templates
+# Templates
 
 Specify templates that will be filled with image ids of what as argument.
 Everytime new title is present new template will be generated.
