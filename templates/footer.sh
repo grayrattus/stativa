@@ -5,8 +5,8 @@ if [ -n "$SUB_ENCRYPTED" ]; then
   <script type="module">
   const password = prompt("To view gallery type password");
 (async () => {
-  try {
-    "$SUB_IMAGES_IDS".split(' ').forEach((imageUrl) => {
+  "$SUB_IMAGES_IDS".split(' ').forEach(async (imageUrl) => {
+    try {
       const encodedImage = await fetch(imageUrl);
       const buffer = await encodedImage.arrayBuffer();
       const view = new Uint8Array(buffer);
@@ -24,10 +24,9 @@ if [ -n "$SUB_ENCRYPTED" ]; then
     } catch (e) {
       console.log(e);
     }
-
   });
-})()
-  </script>
+})();
+</script>
 EOF
 else
   cat <<EOF >> $SUB_OUTPUT_INDEX
@@ -40,7 +39,7 @@ else
 	  const view = new Uint8Array(buffer);
 
 	  const image =  document.getElementById(imageUrl);
-	  image.src = URL.createObjectURL( new Blob([view.data], { type: 'image/png'}));
+	  image.src = URL.createObjectURL( new Blob([view], { type: 'image/png'}));
 	} catch (e) {
 	  console.log(e);
 	}

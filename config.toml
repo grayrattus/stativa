@@ -1,3 +1,4 @@
 title=Title of website
 templates=templates/mainTemplate.sh templates/smallImagesPartialTemplate.sh templates/footer.sh
-imagesDirectory=my_photos
+encrypted=TRUE
+imagesDirectory=encrypted_my_photos
