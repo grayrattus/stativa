@@ -57,4 +57,5 @@ export SUB_ALL_IMAGES="$(echo $IMAGES_IDS | xargs)"
  
 for template in $TEMPLATES; do
   export SUB_IMAGES_IDS="$(envsubst '$SUB_IMAGES_IDS,$SUB_ALL_IMAGES,$SUB_OUTPUT_INDEX,$SUB_ENCRYPTED' < $template | sh)"
+  echo $SUB_IMAGES_IDS
 done
