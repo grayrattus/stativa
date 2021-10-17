@@ -12,8 +12,6 @@ You can use it to:
 
 `sh stativa.sh -c=pathToTomlConfig`
 
-# Examples
-
 ## Encrypted example
 ```
 sh stativa.sh -c=config_encrypted.toml
@@ -47,6 +45,7 @@ imagesDirectory=encrypted_my_photos
 - imagesDirectory - path to directory in which you would like to make gallery from. In this directory `index.html` will be generated that will allow to view your files in the browser.
 
 #templates
+
 Specify templates that will be filled with image ids of what as argument.
 Everytime new title is present new template will be generated.
 
