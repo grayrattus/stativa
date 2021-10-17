@@ -1,8 +1,6 @@
 #/bin/sh
 USED_IMAGES=""
 
-echo $SUB_IMAGES_IDS
-
 for IMAGE_ID in $SUB_IMAGES_IDS; do
   USED_IMAGES="$USED_IMAGES $IMAGE_ID"
   cat << EOF >> $SUB_OUTPUT_INDEX
@@ -12,4 +10,4 @@ for IMAGE_ID in $SUB_IMAGES_IDS; do
 EOF
 done
 
-echo "$(echo "$IMAGES_IDS" | grep -v "$USED_IMAGES")"
+echo "$(echo "$IMAGES_IDS" | sed "s/${USED_IMAGES}//g")"

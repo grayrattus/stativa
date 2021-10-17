@@ -5,7 +5,7 @@ if [ -n "$SUB_ENCRYPTED" ]; then
   <script type="module">
   const password = prompt("To view gallery type password");
 (async () => {
-  "$SUB_IMAGES_IDS".split(' ').forEach(async (imageUrl) => {
+  "$SUB_ALL_IMAGES".split(' ').forEach(async (imageUrl) => {
     try {
       const encodedImage = await fetch(imageUrl);
       const buffer = await encodedImage.arrayBuffer();
@@ -32,7 +32,7 @@ else
   cat <<EOF >> $SUB_OUTPUT_INDEX
     <script type="module">
     (async () => {
-      "$SUB_IMAGES_IDS".split(' ').forEach(async (imageUrl) => {
+      "$SUB_ALL_IMAGES".split(' ').forEach(async (imageUrl) => {
 	try {
 	  const encodedImage = await fetch(imageUrl);
 	  const buffer = await encodedImage.arrayBuffer();

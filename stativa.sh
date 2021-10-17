@@ -53,10 +53,8 @@ fi
 touch $SUB_OUTPUT_INDEX
 
 export SUB_IMAGES_IDS="$(echo $IMAGES_IDS | xargs)"
+export SUB_ALL_IMAGES="$(echo $IMAGES_IDS | xargs)"
  
 for template in $TEMPLATES; do
-  export SUB_IMAGES_IDS="$(envsubst '$SUB_IMAGES_IDS,$SUB_OUTPUT_INDEX,$SUB_ENCRYPTED' < $template | sh)"
-  echo "NOWA PETLA"
-  echo $SUB_IMAGES_IDS
-  #envsubst '$SUB_IMAGES_IDS:$SUB_OUTPUT_INDEX:$SUB_TITLE' < $template
+  export SUB_IMAGES_IDS="$(envsubst '$SUB_IMAGES_IDS,$SUB_ALL_IMAGES,$SUB_OUTPUT_INDEX,$SUB_ENCRYPTED' < $template | sh)"
 done

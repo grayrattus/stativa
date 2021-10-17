@@ -2,7 +2,26 @@
 
 # Usage 
 
-stativa -c pathToTomlConfig
+sh stativa.sh -c pathToTomlConfig
+
+# Examples
+
+## Encrypted example
+```
+sh stativa.sh -c=config_encrypted.toml
+cd encrypted_my_photos
+
+http-server .
+```
+
+## Without encryption
+```
+sh stativa.sh -c=config_normal.toml
+cd my_photos
+
+http-server .
+```
+
 
 # How to configure?
 
@@ -33,4 +52,11 @@ Main template specify top part of HTML with `head` and start of `body` tag.
 This is very important part. You need to provide it as one of last templates.
 It is adding decryption for `gpg` or link images when encryption flag is not provided.
 
+# Special variables in tempates
+
+- `SUB_TITLE` - title of the page
+- `SUB_ENCRYPTE` - if it's present that means you should treat all files as encrypted
+- `SUB_OUTPUT_INDEX` - path to `index.html`
+- `SUB_IMAGES_IDS` - string of paths to images separated by space that left between template parsing
+- `SUB_ALL_IMAGES` - string of paths separated by space that are in images directory provided in config
 
