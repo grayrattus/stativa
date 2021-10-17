@@ -5,6 +5,12 @@ cat << EOF >> $SUB_OUTPUT_INDEX
 	<style>
 	  [data-title]::before {
 	    content: attr(data-title) " ";
+	    font-size: 2em;
+	    text-align: center;
+	    display: block;
+	  }
+	  [data-description]::after {
+	    content: attr(data-description) " ";
 	  }
 	</style>
 EOF

@@ -27,7 +27,9 @@ if [ -n "$SUB_ENCRYPTED" ]; then
 	if (parsed.title) {
 	  image.parentElement.setAttribute('data-title', parsed.title);
 	}
-
+	if (parsed.description) {
+	  image.parentElement.setAttribute('data-description', parsed.description);
+	}
       }
     } catch (e) {
       console.log(e);
@@ -54,7 +56,9 @@ else
 	    if (parsed.title) {
 	      image.parentElement.setAttribute('data-title', parsed.title);
 	    }
-
+	    if (parsed.description) {
+	      image.parentElement.setAttribute('data-description', parsed.description);
+	    }
 	  }
 	} catch (e) {
 	  console.log(e);
