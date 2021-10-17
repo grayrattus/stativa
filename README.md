@@ -6,6 +6,7 @@ You can use it to:
 
 - make gallery from you vacation photos and share with your friends. You really don't need to use Instagram or Facebook
 - make gallery that you want to shared only with people who know password for your photos
+- present XMP metadata of your files
 
 # Basic usage Usage 
 
@@ -57,6 +58,8 @@ Main template specify top part of HTML with `head` and start of `body` tag.
 - footer
 This is very important part. You need to provide it as one of last templates.
 It is adding decryption for `gpg` or link images when encryption flag is not provided.
+
+It also feeds `parentElement` of `img` tags with data from [XMP metatdata format](https://www.adobe.com/products/xmp.html). 
 
 # Special variables in tempates
 
