@@ -19,8 +19,16 @@ if [ -n "$SUB_ENCRYPTED" ]; then
 	format: 'binary'
       });
 
-      const image =  document.getElementById(imageUrl);
-      image.src = URL.createObjectURL( new Blob([decrypted.data], { type: 'image/png'}));
+      const image = document.getElementById(imageUrl);
+      const blob = new Blob([decrypted.data], { type: 'image/png'});
+      image.src = URL.createObjectURL(blob);
+      const parsed = await exifr.parse(blob, {tiff: false, xmp: true});
+      if (parsed) {
+	if (parsed.title) {
+	  image.parentElement.setAttribute('data-title', parsed.title);
+	}
+
+      }
     } catch (e) {
       console.log(e);
     }
@@ -39,14 +47,22 @@ else
 	  const view = new Uint8Array(buffer);
 
 	  const image =  document.getElementById(imageUrl);
-	  image.src = URL.createObjectURL( new Blob([view], { type: 'image/png'}));
+	  const blob = new Blob([view], { type: 'image/png'});
+	  image.src = URL.createObjectURL( blob);
+	  const parsed = await exifr.parse(blob, {tiff: false, xmp: true});
+	  if (parsed) {
+	    if (parsed.title) {
+	      image.parentElement.setAttribute('data-title', parsed.title);
+	    }
+
+	  }
 	} catch (e) {
 	  console.log(e);
 	}
 
       });
     })();
-  </script>
+</script>
 EOF
 
 fi

@@ -7,6 +7,7 @@ cat <<EOF >> $SUB_OUTPUT_INDEX
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   $([ -n "$SUB_ENCRYPTED" ] && echo '<script src="https://unpkg.com/openpgp@5.0.0/dist/openpgp.js" ></script>')
+  <script src="https://cdn.jsdelivr.net/npm/exifr/dist/lite.umd.js"></script>
 
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
   <title>$SUB_TITLE</title>

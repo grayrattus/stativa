@@ -1,0 +1,63 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://unpkg.com/openpgp@5.0.0/dist/openpgp.js" ></script>
+  <script src="https://cdn.jsdelivr.net/npm/exifr/dist/lite.umd.js"></script>
+
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+  <title>Title</title>
+</head>
+<body>
+	<style>
+	  [data-title]::before {
+	    content: attr(data-title) " ";
+	  }
+	</style>
+<div class="grid small-images-partial-template">
+      <div><img id="20210717_115146.jpg.gpg" style="width: 100%;"/></div>
+      <div><img id="20210717_131840.jpg.gpg" style="width: 100%;"/></div>
+      <div><img id="20210718_120328.jpg.gpg" style="width: 100%;"/></div>
+</div>
+<div class="grid small-images-partial-template">
+      <div><img id="20210718_124022.jpg.gpg" style="width: 100%;"/></div>
+      <div><img id="20210718_130430.jpg.gpg" style="width: 100%;"/></div>
+      <div><img id="swang.jpg.gpg" style="width: 100%;"/></div>
+</div>
+</div>
+  <script type="module">
+  const password = prompt("To view gallery type password");
+(async () => {
+  "20210717_115146.jpg.gpg 20210717_131840.jpg.gpg 20210718_120328.jpg.gpg 20210718_124022.jpg.gpg 20210718_130430.jpg.gpg swang.jpg.gpg".split(' ').forEach(async (imageUrl) => {
+    try {
+      const encodedImage = await fetch(imageUrl);
+      const buffer = await encodedImage.arrayBuffer();
+      const view = new Uint8Array(buffer);
+
+      const message = await openpgp.readMessage({ binaryMessage: view });
+
+      const decrypted = await openpgp.decrypt({
+	message: message,
+	passwords: [password],
+	format: 'binary'
+      });
+
+      const image = document.getElementById(imageUrl);
+      const blob = new Blob([decrypted.data], { type: 'image/png'});
+      image.src = URL.createObjectURL(blob);
+      const parsed = await exifr.parse(blob, {tiff: false, xmp: true});
+      if (parsed) {
+	if (parsed.title) {
+	  image.parentElement.setAttribute('data-title', parsed.title);
+	}
+
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+})();
+</script>
+</body>
