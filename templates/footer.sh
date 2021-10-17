@@ -7,6 +7,8 @@ if [ -n "$SUB_ENCRYPTED" ]; then
 (async () => {
   "$SUB_ALL_IMAGES".split(' ').forEach(async (imageUrl) => {
     try {
+      const image = document.getElementById(imageUrl);
+      image.parentElement.setAttribute('aria-busy', "true");
       const encodedImage = await fetch(imageUrl);
       const buffer = await encodedImage.arrayBuffer();
       const view = new Uint8Array(buffer);
@@ -19,7 +21,6 @@ if [ -n "$SUB_ENCRYPTED" ]; then
 	format: 'binary'
       });
 
-      const image = document.getElementById(imageUrl);
       const blob = new Blob([decrypted.data], { type: 'image/png'});
       image.src = URL.createObjectURL(blob);
       const parsed = await exifr.parse(blob, {tiff: false, xmp: true});
@@ -31,6 +32,7 @@ if [ -n "$SUB_ENCRYPTED" ]; then
 	  image.parentElement.setAttribute('data-description', parsed.description);
 	}
       }
+      image.parentElement.setAttribute('aria-busy', "false");
     } catch (e) {
       console.log(e);
     }
