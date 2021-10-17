@@ -1,8 +1,15 @@
-# Title of this project need to be agreed
+# Stativa
 
-# Usage 
+Static site gallery generator that uses `gpg` for images encryption.
 
-sh stativa.sh -c pathToTomlConfig
+You can use it to:
+
+- make gallery from you vacation photos and share with your friends. You really don't need to use Instagram or Facebook
+- make gallery that you want to shared only with people who know password for your photos
+
+# Basic usage Usage 
+
+`sh stativa.sh -c=pathToTomlConfig`
 
 # Examples
 
@@ -21,7 +28,6 @@ cd my_photos
 
 http-server .
 ```
-
 
 # How to configure?
 
