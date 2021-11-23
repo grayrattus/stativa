@@ -23,8 +23,13 @@ TEMPLATES=$(grep templates $CONFIG_PATH | cut -d '=' -f 2)
 export SUB_ENCRYPTED=$(grep encrypted $CONFIG_PATH | cut -d '=' -f 2)
 
 if [ ! -n "$IMAGES_DIRECTORY" ]; then
-  echo "You need to provide images directory in which index.html will be created"
-  exit;
+  SHOULD_USE_CONFIG_PATH_AS_IMAGES_DIRECTORY=$(grep configPathAsImageDirectory $CONFIG_PATH | cut -d '=' -f 2)
+  if [ ! -n "$SHOULD_USE_CONFIG_PATH_AS_IMAGES_DIRECTORY" ]; then
+    echo "You need to provide images directory in which index.html will be created"
+    exit;
+  fi
+  echo "Using config dirname as images directory"
+  IMAGES_DIRECTORY=$(dirname $CONFIG_PATH)
 fi
 
 export SUB_OUTPUT_INDEX="$IMAGES_DIRECTORY/index.html"

@@ -43,6 +43,7 @@ imagesDirectory=encrypted_my_photos
 - templates - separated with space list of templates. At least 2 are required to make it working `mainTemplate.sh` and `footer.sh` but I didn't make them default since maybe you want to make custom ones. It's pretty easy.
 - encrypted - if it's provided files will be encrypted with passphrase you provide in further step.
 - imagesDirectory - path to directory in which you would like to make gallery from. In this directory `index.html` will be generated that will allow to view your files in the browser.
+- configPathAsImageDirectory - if this flag is provided config path will be the path to images directory
 
 # Templates
 
